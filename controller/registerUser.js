@@ -10,7 +10,6 @@ const loadLogin = async(req, res) => {
         console.log(err);
     }
 }
-
 const loginUser = async(req, res) => {
     const {email, password} = req.body;
     try {

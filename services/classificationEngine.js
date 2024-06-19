@@ -1,9 +1,4 @@
-/**
- * Function to classify incoming data based on user-defined rules
- * @param {Object} data - The incoming data to be classified
- * @param {Array} rules - The user-defined classification rules
- * @returns {String} - The category assigned to the data
- */
+
 const classifyData = (data, rules) => {
     for (let rule of rules){
         console.log(`data ${JSON.stringify(data)}\n`);
@@ -17,11 +12,6 @@ const classifyData = (data, rules) => {
     return 'unknown';  // Corrected typo from 'unkown' to 'unknown'
 }
 
-/**
- * Function to parse a user-defined rule
- * @param {String} rule - The rule in DSL format
- * @returns {Object} - The parsed rule with condition function and category
- */
 const parseRule = (rule) => {
     const conditionMatch = rule.match(/IF (.+) THEN category = '(.+)'/);  // Corrected regex
     if (!conditionMatch) {

@@ -38,6 +38,7 @@ const start = async () => {
         console.log(`error starting server ${err}`);
     }
 };
+
 start();
 
 io.on('connection', (socket) => {
@@ -54,7 +55,6 @@ io.on('connection', (socket) => {
             socket.emit('error', 'Failed to Classify Data');
         }
     });
-
     socket.on('disconnect',()=>{
         console.log('Client disconnected');
     });

@@ -10,5 +10,4 @@ const RuleSchema = new mongoose.Schema({
         ref: 'User'
     }
 });
-
 module.exports = mongoose.model('Rule',RuleSchema);

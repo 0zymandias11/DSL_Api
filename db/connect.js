@@ -8,5 +8,4 @@ const connectDB = (url) =>{
         console.log(err);
     })
 };
-
 module.exports = connectDB;

@@ -14,7 +14,6 @@ const createRules = async(req, res)=>{
         res.status(500).send("Server Error");
     }
 };
-
 const getRules = async(req, res)=>{
     try{
         const rules = await Rule.find({user: req.user.id});

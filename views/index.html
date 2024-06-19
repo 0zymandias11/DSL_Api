@@ -147,7 +147,6 @@
           'x-auth-token': localStorage.getItem('token')
         },
       });
-
       const result = await response.json();
       data.userId = result.user_id;
 
