@@ -4,9 +4,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon app.js",
-    "prepare": "husky",
+    "prepare": "husky ",
     "lint": "eslint ."
-
   },
   "keywords": [],
   "author": "",

@@ -130,7 +130,7 @@
       })
       .then(response => response.json())
       .then(data => {
-        fetchRules(); // Refresh the list after adding a new rule
+        fetchRules(); 
         document.getElementById('ruleForm').reset();
       })
       .catch(error => console.error('Error:', error));
@@ -162,7 +162,6 @@
       });
     });
 
-    // Fetch and display rules on page load
     fetchRules();
   </script>
 </body>

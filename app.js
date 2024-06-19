@@ -51,7 +51,7 @@ io.on('connection', (socket) => {
             socket.emit('classified', {category: classfiedCategory});
         }catch(err){
             console.log(err);
-            socket.emit('error', 'Failed to classify data');
+            socket.emit('error', 'Failed to Classify Data');
         }
     });
 
