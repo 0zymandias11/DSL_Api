@@ -12,7 +12,6 @@ const { classifyData } = require('./services/classificationEngine');
 const app = express();
 const server = http.createServer(app);  // Create HTTP server
 const io = socket(server);
-
 // Middleware to parse JSON
 app.use(express.json());
 
