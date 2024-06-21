@@ -81,6 +81,9 @@
     </div>
     <button type="submit">Classify Data</button>
   </form>
+  <div id="logout">
+    <button type="button" id="logoutBtn">Logout</button>
+  </div>
 
   <h2>Classification Result</h2>
   <div id="classificationResult"></div>
@@ -104,6 +107,11 @@
         result.rules.forEach(rule => {
           const listItem = document.createElement('li');
           listItem.textContent = rule.rule;
+          const deleteButton = document.createElement('button');
+          deleteButton.textContent = 'Delete';
+          deleteButton.classList.add('delete-btn');
+          deleteButton.addEventListener('click', () => deleteRule(rule._id));
+          listItem.appendChild(deleteButton);
           ruleList.appendChild(listItem);
         });
       } catch (error) {
@@ -111,7 +119,20 @@
       }
     };
 
-
+    const deleteRule = async (ruleId) => {
+      try {
+        await fetch(`/api/rules/${ruleId}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-auth-token': localStorage.getItem('token')
+          }
+        });
+        fetchRules();
+      } catch (error) {
+        console.error('Error deleting rule:', error);
+      }
+    };
 
     document.getElementById('ruleForm').addEventListener('submit', function(event) {
       event.preventDefault();
@@ -159,6 +180,16 @@
       socket.on('error', function(error) {
         console.error('Error:', error);
       });
+    });
+
+    document.getElementById('logoutBtn').addEventListener('click', async function(event){
+      event.preventDefault();
+      await fetch('/api/dsl_proj/logout', {
+        method: 'GET'
+      });
+
+      localStorage.removeItem('token');
+      window.location.href = '/api/dsl_proj/login';
     });
 
     fetchRules();
