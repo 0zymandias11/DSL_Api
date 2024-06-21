@@ -49,7 +49,7 @@ const transformCondition = (conditionString) => {
         // const right = isNaN(p3) ? `data.${p3}` : p3;
         const right = p3;
         // console.log(`${left} ${right} ${p2='==='}`);
-        return `${left} ${p2} ${right}`;
+        return `${left} ${p2= '==='} ${right}`;
     });
 
     return conditionString;
