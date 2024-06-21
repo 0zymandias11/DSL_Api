@@ -81,7 +81,7 @@ const registerUser = async(req, res) => {
             jwt.sign(payload, process.env.JWT_SECRET,{expiresIn: 360000},
                 (err, token)=>{
                     if(err) throw err;
-                    res.json({token: token});
+                    res.status(200).json({token: token});
                 }
             );
 
@@ -89,11 +89,22 @@ const registerUser = async(req, res) => {
             console.log(err);
             res.status(500).json({msg: 'Server error !'});
     }
+
+}
+
+const logoutUser = async(req, res)=>{
+    try{
+        res.status(201).redirect('/api/dsl_proj/login')
+    }catch(err){
+        console.log(err);
+        res.status(500).send("server error !!");
+    }
 }
 
 module.exports = {
     loginUser, 
     registerUser,
     loadLogin,
-    loadRegister
+    loadRegister,
+    logoutUser
 };

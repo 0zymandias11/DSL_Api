@@ -8,7 +8,7 @@ const createRules = async(req, res)=>{
         });
 
         const rule = await newRule.save();
-        res.json(rule);
+        res.status(200).json(rule);
     }catch(err){
         console.error(err.message);
         res.status(500).send("Server Error");

@@ -43,7 +43,6 @@ start();
 
 io.on('connection', (socket) => {
     console.log("new client connected");
-
     socket.on('data', async(data)=>{
         try{
             const userRule = await Rules.find({user: data.userId});
