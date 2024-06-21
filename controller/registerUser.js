@@ -101,6 +101,14 @@ const logoutUser = async(req, res)=>{
     }
 }
 
+const logoutUser = (req, res)=>{
+    try{
+        res.redirect('/api/dsl_proj/login');
+    }catch(err){
+        res.status(500).send("Server Error !!");
+    }
+}
+
 module.exports = {
     loginUser, 
     registerUser,

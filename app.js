@@ -8,11 +8,11 @@ const socket = require('socket.io');
 const path = require('path');
 const Rules = require('./models/Rules');
 const { classifyData } = require('./services/classificationEngine');
+const notFoundMiddleware = require('./middleware/notFound');
 
 const app = express();
 const server = http.createServer(app);  // Create HTTP server
 const io = socket(server);
-
 // Middleware to parse JSON
 app.use(express.json());
 
@@ -25,6 +25,8 @@ app.get('/', (req, res) => {
 
 app.use('/api/dsl_proj', loginRouter);
 app.use('/api/rules', rulesRouter);
+
+app.use(notFoundMiddleware);
 
 const port = process.env.PORT || 3000;
 
