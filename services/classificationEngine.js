@@ -28,7 +28,7 @@ const parseRule = (rule) => {
     const conditionString = conditionMatch[1];
     const category = conditionMatch[2];
 
-    console.log(transformCondition(conditionString));
+    // console.log(transformCondition(conditionString));
     const condition = new Function('data', `return ${transformCondition(conditionString)}`);
     return { condition, category };
 }

@@ -2,6 +2,7 @@ const path = require('path');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
+const { json } = require('body-parser');
 
 const loadLogin = async(req, res) => {
     try {
@@ -35,7 +36,7 @@ const loginUser = async(req, res) => {
             { expiresIn: 360000 },
             (err, token)=>{
                 if(err) throw err;
-                res.status(201).json({token: token});
+                res.status(200).json({token: token});
             }
         );
     } catch(err) {
@@ -61,6 +62,8 @@ const registerUser = async(req, res) => {
             if(user)
                 return res.status(400).json({msg: "User already Exists"});
             
+            // console.log(`req.body: ${JSON.stringify(req.body)}`);
+
             const salt = await bcrypt.genSalt(10);
             let hashed_password = await bcrypt.hash(password, salt);
 
