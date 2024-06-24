@@ -28,7 +28,7 @@ const parseRule = (rule) => {
     const conditionString = conditionMatch[1];
     const category = conditionMatch[2];
 
-    // console.log(transformCondition(conditionString));
+    console.log(transformCondition(conditionString));
     const condition = new Function('data', `return ${transformCondition(conditionString)}`);
     return { condition, category };
 }
@@ -48,8 +48,10 @@ const transformCondition = (conditionString) => {
         const left = `data.${p1}`;
         // const right = isNaN(p3) ? `data.${p3}` : p3;
         const right = p3;
+        
+        const mid = p2 === '='? '===': p2
         // console.log(`${left} ${right} ${p2='==='}`);
-        return `${left} ${p2= '==='} ${right}`;
+        return `${left} ${mid} ${right}`;
     });
 
     return conditionString;

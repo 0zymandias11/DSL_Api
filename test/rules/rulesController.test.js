@@ -25,7 +25,7 @@ describe('Rule Creation', () => {
     sinon.restore();
   });
 
-  it('should create a rule successfully', async () => {
+  it('should create a rule 1 successfully', async () => {
     const { expect } = await import('chai');
     sinon.stub(Rule.prototype, 'save').resolves();
 
@@ -34,6 +34,7 @@ describe('Rule Creation', () => {
     expect(res.status.calledWith(200)).to.be.true;
     expect(res.json.called).to.be.true;
   });
+  it('should')
 
 //   it('should handle server error', async () => {
 //     const { expect } = await import('chai');
